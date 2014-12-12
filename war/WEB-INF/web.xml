@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <!-- Servlets -->
+    <servlet>
+    <servlet-name>AuthenUser</servlet-name>
+    <servlet-class>servlet.AuthenUserServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>AuthenUser</servlet-name>
+    <url-pattern>/authenuser</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Welcome</servlet-name>
+    <servlet-class>servlet.welcome.WelcomeServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>Welcome</servlet-name>
+    <url-pattern>/welcome</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>Init</servlet-name>
+    <servlet-class>servlet.InitServlet</servlet-class>
+  </servlet>
+  
+    <servlet-mapping>
+    <servlet-name>Init</servlet-name>
+    <url-pattern>/init</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>
