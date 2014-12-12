@@ -6,13 +6,13 @@ $(document).ready(function(){
 	  		dataType:'json',
 	  		url:'authenuser'
 	  	}).then(function(responseText){
-	  		$('#authentifie').responseText.nickname;
+	  		$('#authentifie').text(responseText);
 	  		
 	  		if(responseText.nickname!=null){
-	  			$("authentification").hidden-print();
+	  			$("#authentification").hidden-print();
 	  		}
 	  		else{
-	  			$("authentifie").hidden-print();
+	  			$("#authentifie").hidden-print();
 	  		}
 	  		
 	  	});
