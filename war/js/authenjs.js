@@ -1,15 +1,22 @@
 $(document).ready(function(){
 
+	
 	  	$.ajax({
 	  		type:"GET",
 	  		dataType:'json',
 	  		url:'authenuser'
 	  	}).then(function(responseText){
-	  		$('#authentifie').text(responseText);		
+	  		$('#authentifie').responseText.nickname;
+	  		
+	  		if(responseText.nickname!=null){
+	  			$("authentification").hidden-print();
+	  		}
+	  		else{
+	  			$("authentifie").hidden-print();
+	  		}
 	  		
 	  	});
 });
-
 
 function redirectToGoogle(){
   	$.ajax({
@@ -38,7 +45,7 @@ function redirectTomyopenID(){
   		dataType:'json',
   		url:'authenuser'
   	}).then(function(data){
-  		window.location.href = data.MyOpenId;
+  		window.location.href = data.MyOpenId.com;
   	})
 }
 

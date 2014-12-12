@@ -39,11 +39,14 @@ public class AuthenUserServlet extends HttpServlet {
 
       //  response.setContentType("text/html");
       //  PrintWriter out = response.getWriter();
+        JSONObject jsonlogin = new JSONObject();
+        
 
         if (user != null) {
         	JSONObject json = new JSONObject();
         	try {
 				json.put("nickname", user.getNickname());
+				
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
