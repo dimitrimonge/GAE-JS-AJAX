@@ -27,18 +27,7 @@
     <servlet-name>Welcome</servlet-name>
     <url-pattern>/welcome</url-pattern>
   </servlet-mapping>
-  
-  <servlet>
-    <servlet-name>AjoutPlan</servlet-name>
-    <servlet-class>servlet.AjoutPlanServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>AjoutPlan</servlet-name>
-    <url-pattern>/ajoutPlan</url-pattern>
-  </servlet-mapping>
-  
-  
+   
     <servlet>
     <servlet-name>Init</servlet-name>
     <servlet-class>servlet.InitServlet</servlet-class>
@@ -49,8 +38,6 @@
     <url-pattern>/init</url-pattern>
   </servlet-mapping>
   
-   
-    
   
   <!-- Default page to serve -->
   <welcome-file-list>
