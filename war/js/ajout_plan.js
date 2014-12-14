@@ -1,9 +1,20 @@
 var i=0;
-oldDate = new Date(0,0,0,0,0,0);
+var tab_duree = [];
+function MAJtempsTot()
+{
+	oldDate = new Date(0,0,0,0,0,0);
+	for (k=0;k<tab_duree.length;k++)
+	{
+		oldDate.setSeconds(oldDate.getSeconds() + tab_duree[k].getSeconds());
+		oldDate.setMinutes(oldDate.getMinutes() + tab_duree[k].getMinutes());
+		oldDate.setHours(oldDate.getHours() + tab_duree[k].getHours());
+	}	
+	var oldtemps=Math.round((oldDate.getHours()*60+oldDate.getMinutes()+oldDate.getSeconds()/60)*100)/100;
+	$('#timeID').text(oldtemps+" min"); 
+}
+
 function test()
 {
-	  
-   // console.log(fruits.length);
 	var tableauTitle ;  
 	var tableauDescr ; 
 	var heure= parseInt($("#heure").val());
@@ -12,29 +23,17 @@ function test()
 	tableauTitle= $("#titleDescription").val(); 
 	tableauDescr=  $("#exerciceDescription").val();
 	
-	
-	//document.write(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + 
-
-	
 	if (isNaN(heure)|| isNaN(minute) || isNaN(seconde) ){alert(" Le format de la durée n'est pas un chiffre ! ");}
 	else if (tableauTitle==""){ alert("veuillez entrer un titre ")}
 	else if (tableauDescr==""){ alert("veuillez entrer une description ")}
 	else 
-	{	
-		date1 = new Date(0,0,0,heure,minute,seconde);
-		//oldDate=oldDate+date1;
-		
-		oldDate.setSeconds(oldDate.getSeconds() + seconde);
-		oldDate.setMinutes(oldDate.getMinutes() + minute);
-		oldDate.setHours(oldDate.getHours() + heure);
-		
-		var oldtemps=Math.round((oldDate.getHours()*60+oldDate.getMinutes()+oldDate.getSeconds()/60)*100)/100;
-		var temps = Math.round((heure*60+minute+seconde/60)*100)/100;
+	{	// --------------Ajout des temps --------------
+		date1=new Date(0,0,0,heure,minute,seconde);
+		tab_duree.push(date1);
+		MAJtempsTot();
+		var temps = Math.round((heure*60+minute+seconde/60)*100)/100;	
+		// --------------/ Ajout des temps --------------
 		i=i+1;
-		
-		
-		 $('#timeID').text(oldtemps+" min"); 
-		 
 		 $('#exercicesAdded').append("<tr id="+i+"><td> </td><td>"+ tableauTitle+"</td> <td class='hidden-xs'><p>"+
 				 tableauDescr+
 				 "</p></td><td>"+
@@ -46,9 +45,18 @@ function test()
 
 function supr(id)
 {
-	//alert(id)
-	
+	tab_duree.splice(id, 1);
+	MAJtempsTot();
 	var idDelete="#"+ id;
 	$(idDelete).remove();
 	console.log(id);
+}
+
+
+function datastore()
+{
+	$.get('ajoutPlan', function(responseText)
+	{
+  		//$('#texte_accueil').text(responseText);  			
+  	});
 }

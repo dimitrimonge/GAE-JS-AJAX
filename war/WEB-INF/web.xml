@@ -6,6 +6,8 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets -->
+  
+  
     <servlet>
     <servlet-name>AuthenUser</servlet-name>
     <servlet-class>servlet.AuthenUserServlet</servlet-class>
@@ -26,6 +28,17 @@
     <url-pattern>/welcome</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>AjoutPlan</servlet-name>
+    <servlet-class>servlet.AjoutPlanServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>AjoutPlan</servlet-name>
+    <url-pattern>/ajoutPlan</url-pattern>
+  </servlet-mapping>
+  
+  
     <servlet>
     <servlet-name>Init</servlet-name>
     <servlet-class>servlet.InitServlet</servlet-class>
@@ -35,6 +48,9 @@
     <servlet-name>Init</servlet-name>
     <url-pattern>/init</url-pattern>
   </servlet-mapping>
+  
+   
+    
   
   <!-- Default page to serve -->
   <welcome-file-list>
