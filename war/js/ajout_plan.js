@@ -61,8 +61,6 @@ function datastore()
 	var timeID= $("#timeID").text();
 	var exercicesAdded= $("#exercicesAdded").text();
 	
-	alert(timeID);
-	
 	$.get('ajout', 
 	{ 
 		'exercicesAdded':exercicesAdded,
@@ -74,6 +72,7 @@ function datastore()
 	function(responseText)
 	{
 			
-  			
   	});
+	alert("Votre plan d'exercice à bien été ajouté")
+	window.location="ha-result-detail-screen.html?#titre="+inputTitle;
 }

@@ -49,7 +49,10 @@ public class AjoutServlet extends HttpServlet {
 		text.setProperty("exercicesAdded",exercicesAdded);
 		
 		// entrée dans le datastore 
+		
 		datastore.put(text);
+		response.equals(1);
+		
 		
 	}
 
