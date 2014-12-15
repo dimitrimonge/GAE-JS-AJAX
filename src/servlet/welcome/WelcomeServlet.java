@@ -48,13 +48,16 @@ public class WelcomeServlet extends HttpServlet {
 			// Récupération du résultat de la requète à l’aide de PreparedQuery 
 			PreparedQuery pq = datastore.prepare(q);
 			
-			Entity result= pq.asSingleEntity();
-			
-			title = (String) result.getProperty("Title");
-			descript = (String) result.getProperty("descript");
-			
-		// récupération de la valeur et exécution de son code ….
-		syncCache.put(title, descript); // Mise à jour du cache
+			 try // le try/catch permet d'afficher l'erreur en cas de plusieures entrées result.getProperty("Title");
+			 {
+				Entity result = pq.asSingleEntity();
+				title = (String) result.getProperty("Title");
+				descript = (String) result.getProperty("descript");
+				syncCache.put(title, descript); // Mise Ã  jour du cache
+			 }
+			 catch (  PreparedQuery.TooManyResultsException e) { 
+				 throw  e;
+			 }
 		}
 			
 			response.setContentType("text/plain");

@@ -30,15 +30,19 @@ public class AjoutServlet extends HttpServlet {
    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Entity text = new Entity("text");
-		text.setProperty("Title","welcome");
-		text.setProperty("descript", "ceci est un message daccueil ");
+		
+		//tableauTitle= $("#titleDescription").val(); 
+		String titleDescription=request.getParameter("exercicesAdded");
+		
+		Entity text = new Entity("Exercice");
+		text.setProperty("Title",titleDescription);
+		//text.setProperty("descript", "ceci est un message daccueil ");
 		datastore.put(text);
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
 		}
 	
 	}

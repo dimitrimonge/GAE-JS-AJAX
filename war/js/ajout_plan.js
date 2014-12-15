@@ -55,8 +55,11 @@ function supr(id)
 
 function datastore()
 {
-	/*$.get('ajoutPlan', function(responseText)
+	var text= $("#exercicesAdded").text();
+	alert(text);
+	$.get('ajout', { 'exercicesAdded':text},function(responseText)
 	{
+			
   		//$('#texte_accueil').text(responseText);  			
-  	});*/
+  	});
 }
