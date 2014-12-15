@@ -55,11 +55,25 @@ function supr(id)
 
 function datastore()
 {
-	var text= $("#exercicesAdded").text();
-	alert(text);
-	$.get('ajout', { 'exercicesAdded':text},function(responseText)
+	var inputTitle= $("#inputTitle").val();
+	var inputDescription= $("#inputDescription").val();
+	var domain= $("#e1").val();
+	var timeID= $("#timeID").text();
+	var exercicesAdded= $("#exercicesAdded").text();
+	
+	alert(timeID);
+	
+	$.get('ajout', 
+	{ 
+		'exercicesAdded':exercicesAdded,
+		'inputTitle':inputTitle,
+		'inputDescription':inputDescription,
+		'domain':domain,
+		'timeID':timeID
+	},
+	function(responseText)
 	{
 			
-  		//$('#texte_accueil').text(responseText);  			
+  			
   	});
 }

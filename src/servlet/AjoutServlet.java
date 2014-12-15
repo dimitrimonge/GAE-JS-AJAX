@@ -31,12 +31,24 @@ public class AjoutServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//tableauTitle= $("#titleDescription").val(); 
-		String titleDescription=request.getParameter("exercicesAdded");
 		
+		/*-------------------recup parametre passé depusi le get ----------------*/
+		String inputTitle=request.getParameter("inputTitle");
+		String inputDescription=request.getParameter("inputDescription");
+		String domain=request.getParameter("domain");
+		String exercicesAdded=request.getParameter("exercicesAdded");
+		String timeID=request.getParameter("timeID");
+		
+	
+		/*------------------- FIN recup parametre passé depusi le get ----------------*/
 		Entity text = new Entity("Exercice");
-		text.setProperty("Title",titleDescription);
-		//text.setProperty("descript", "ceci est un message daccueil ");
+		text.setProperty("inputTitle",inputTitle);
+		text.setProperty("inputDescription",inputDescription);
+		text.setProperty("domain",domain);
+		text.setProperty("timeID",timeID);
+		text.setProperty("exercicesAdded",exercicesAdded);
+		
+		// entrée dans le datastore 
 		datastore.put(text);
 		
 	}
