@@ -17,7 +17,7 @@
       <!-- ------------------------------------------- HEADER ZONE ------------------------------------------- -->
       <nav class="navbar navbar-inverse" role="navigation">
         <div class=" col-md-10 col-sm-10 col-xs-10 ">
-            <form class="navbar-form navbar-left"  style="width:100%" role="search">
+            <form class="navbar-form navbar-left"  style="width:100%" role="search" action="ha-result-screen.html">
                 <button type="submit" class="btn btn-default">Search</button>
                 <div class="form-group"  style="width:90%">
                     <input type="text"  style="width:100%" class="form-control" placeholder="Search">
@@ -29,10 +29,9 @@
             <div id="authentification" class="navbar-form navbar-left"  style="width:100%" role="search">
                 <button type="submit" onclick="redirectToGoogle()" class="btn btn-primary">G</button>
                 <button type="submit" onclick="redirectToyahoo()" class="btn btn-success">Y</button>
-                <button type="submit" onclick="redirectTomyopenID()" class="btn btn-warning">Oooo</button>
+                <button type="submit" onclick="redirectTomyopenID()" class="btn btn-warning">O</button>
           </div> 
-          <div id="authentifie" class="navbar-form navbar-left"  style="width:100%">
-         		 <button type="submit" onclick="redirectTologout()" class="btn btn-primary">log out</button>
+          <div id="authentifie" class="navbar-form navbar-left"  class="btn btn-default">
          </div>
           			
         </div> 
@@ -45,6 +44,7 @@
           <h3> Your Domain</h3>
       </div>
       
+      <form class="navbar-form navbar-left"  style="width:100%" role="search" action="ha-result-screen.html">
       <div class=" col-md-12 col-sm-12 col-xs-12" style="margin-bottom:80px">
           <div class=" col-md-3 col-sm-3 col-xs-3 ">
             <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> run </label>
@@ -89,7 +89,7 @@
             <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> basketball </label>
            </div>
        </div>
-      
+      </form>
       
       <!-- ------------------------------------------- FOOTER ZONE ------------------------------------------- -->
       <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">

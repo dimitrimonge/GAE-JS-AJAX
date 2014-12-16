@@ -35,22 +35,34 @@ public class AuthenUserServlet extends HttpServlet {
     	
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser(); // or req.getUserPrincipal()
-        Set<String> attributes = new HashSet();
+    Set<String> attributes = new HashSet();
 
       //  response.setContentType("text/html");
       //  PrintWriter out = response.getWriter();
-        JSONObject jsonlogin = new JSONObject();
+    //    JSONObject jsonlogin = new JSONObject();
         
 
         if (user != null) {
+        	
         	JSONObject json = new JSONObject();
+        //	String logoutUrl = userService.createLoginURL("/ha-search-screen.html");
         	try {
 				json.put("nickname", user.getNickname());
+				syncCache.put("nickname", user.getNickname());
 				
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+        	 for (String providerName : openIdProviders.keySet()) {
+                 String loginUrl = userService.createLoginURL("/ha-search-screen.html");
+                 try {
+ 					json.put(providerName,loginUrl);
+ 				} catch (JSONException e) {
+ 					// TODO Auto-generated catch block
+ 					e.printStackTrace();
+ 				}
+             }
         	
         	response.setContentType("application/json");
         	PrintWriter out = response.getWriter();   

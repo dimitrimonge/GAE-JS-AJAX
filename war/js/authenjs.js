@@ -5,15 +5,15 @@ $(document).ready(function(){
 	  		type:"GET",
 	  		dataType:'json',
 	  		url:'authenuser'
-	  	}).then(function(responseText){
-	  		$('#authentifie').text(responseText);
+	  	}).then(function(data){
+	  		$('#authentifie').text(data.nickname);
 	  		
-	  		if(responseText.nickname!=null){
+	  /*		if(responseText.nickname!=null){
 	  			$("#authentification").hidden-print();
 	  		}
 	  		else{
 	  			$("#authentifie").hidden-print();
-	  		}
+	  		}*/
 	  		
 	  	});
 });
