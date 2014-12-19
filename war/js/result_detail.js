@@ -8,16 +8,8 @@ function recupData()
 	//var titre= getParameterByName('titre');
 	var titre = location.search.split('titre=')[1];	// recupere le titre du training plan associé
 		$.get('resultdetail',{'titre':titre},function(responseText){
-			//var tableau = [];
-			
-			alert(responseText);
 			var obj = JSON.parse(responseText);
-			//alert obj;
-			var nom=obj.arrayObj[0].title + " " + obj.arrayObj[0].descr + " " + obj.arrayObj[0].time ; 
 			
-			var nom2=obj.arrayObj[1].title + " " + obj.arrayObj[1].descr + " " + obj.arrayObj[1].time ; 
-			alert(nom);
-			alert(nom2);
 			
 			for (k=0;k<obj.arrayObj.length;k++)
 			{
@@ -61,6 +53,7 @@ function recupData()
 	                    '    </td>'+
 	                   ' </tr>')
 			}
+			
 			
 			
 		});

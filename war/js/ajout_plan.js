@@ -31,6 +31,7 @@ function test()
 	else if (descr==""){ alert("veuillez entrer une description ")}
 	else 
 	{	
+		
 		tableauTitle.push(titre); 
 		tableauDescr.push(descr);
 		
@@ -69,6 +70,7 @@ function supr(id)
 function datastore()
 {
 	var inputTitle= $("#inputTitle").val();
+	inputTitle = inputTitle.replace(/ /g, "_");
 	var inputDescription= $("#inputDescription").val();
 	var domain= $("#e1").val();
 	var timeID= $("#timeID").text();
@@ -90,5 +92,8 @@ function datastore()
 			
   	});
 	alert("Votre plan d'exercice à bien été ajouté")
-	window.location="ha-result-detail-screen.html?titre="+inputTitle;
+	setTimeout(function(){	// pour la MAJ du datastore
+			window.location="ha-result-detail-screen.html?titre="+inputTitle;
+	  		},1000);	  	
+	
 }
