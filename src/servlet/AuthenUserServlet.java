@@ -55,13 +55,8 @@ public class AuthenUserServlet extends HttpServlet {
 			// userService.createLoginURL("/ha-search-screen.html");
 			try {
 				json.put("nickname", user.getNickname());
-<<<<<<< HEAD
-				// syncCache.put("nickname", user.getNickname());
-
-=======
 				syncCache.put("nickname", user.getNickname());
-				
->>>>>>> 61cd134118d235613c93e5df41741c9b64b48930
+
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
