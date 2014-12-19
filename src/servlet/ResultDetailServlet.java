@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONObject;
+
+
+
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -27,13 +29,15 @@ import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.labs.repackaged.org.json.JSONArray;
+import com.google.appengine.labs.repackaged.org.json.JSONException;
+import com.google.appengine.labs.repackaged.org.json.JSONObject;
+
 
 
 
 public class ResultDetailServlet extends HttpServlet {
 	private DatastoreService datastore;
-	private JSONObject resultList;
-	private JSONArray statham;
+	
 	public ResultDetailServlet() {
 	        super();
 			datastore = DatastoreServiceFactory.getDatastoreService();
@@ -47,7 +51,7 @@ public class ResultDetailServlet extends HttpServlet {
 
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
-			JSONArray statham = null;
+			JSONArray arrayObj = new JSONArray();
 			String descript; // Définir l'objet à stocker
 			String titrePlan=request.getParameter("titre");
 			//String title="Training plan"; // Définir la clé de la valeur à stocker
@@ -66,43 +70,45 @@ public class ResultDetailServlet extends HttpServlet {
 
 				// on recupere les lignes du datasotre correspondant a notre plan d'exercice 
 				Query q = new Query("Exercice").setFilter(NameFilter);
-				 String title = "";
+				
+				 
 				// Récupération du résultat de la requète à l’aide de PreparedQuery 
 				PreparedQuery pq = datastore.prepare(q);
-				int id = 0;
-				for (Entity result : pq.asIterable()) {// parcours les lignes des resultats notre filtre 
+				
+				for (Entity result : pq.asIterable()) 
+				{// parcours les lignes des resultats notre filtre 
+					
+					  JSONObject obj = new JSONObject();
 					 
-					  id=id+1;
-					  resultList = new JSONObject();
 					  String exercicesTitle = (String) result.getProperty("exercicesTitle");
 					  String exercicesDescr = (String) result.getProperty("exercicesDescr");
-					  int exercicesTime = (int) result.getProperty("exercicesTime");
-					  resultList.put(exercicesTitle,"title");
-					  resultList.put(exercicesTitle,"descr");
-					  resultList.put(exercicesTitle,"time");
-					  //title = exercicesTitle;
-					  statham.put(resultList);
+					  String exercicesTime =(String) result.getProperty("exercicesTime");
+					  try 
+					  {
+						obj.put(exercicesTitle,"title");
+						obj.put(exercicesDescr,"descr");
+						obj.put(exercicesTime,"time");
+						arrayObj.put(obj);
+					  }
+					  catch (JSONException e) 
+					  {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					  }
+					  
 					}
-				
-				String callBack = request.getParameter("jsoncallback");
-				if(callBack != null)
-					//out.print(callBack + "(" + statham + ");");
-				//else
-					//out.print(statham);
-				//out.close();
-				
-				
-				//response.getWriter().write(title);
-				//request.setAttribute("title", title);
-
-				response.setContentType("text/plain");
-				response.setCharacterEncoding("UTF-8");
-				response.getWriter().write(title);
+		
 			}
-				
-				//response.setContentType("text/plain");
-				//response.setCharacterEncoding("UTF-8");
-				//response.getWriter().write(descript);
+			
+			JSONObject json = new JSONObject();
+		    try {
+				json.put("arrayObj", arrayObj);
+				json.write(response.getWriter());
+			} catch (JSONException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 		}
 
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
