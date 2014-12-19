@@ -2,18 +2,13 @@ $(document).ready(function(){
 
 	
 	  	$.ajax({
-	  		type:"GET",
+	  		type:"POST",
 	  		dataType:'json',
-	  		url:'authenuser'
+	  		url:'resultsearch'
 	  	}).then(function(data){
-	  		$('#authentifie').text(data.nickname);
-	  		
-	  /*		if(responseText.nickname!=null){
-	  			$("#authentification").hidden-print();
-	  		}
-	  		else{
-	  			$("#authentifie").hidden-print();
-	  		}*/
+	  		$('#exercice').text(data.exercice);
+	  		$('#training').text(data.training);
+
 	  		
 	  	});
 });

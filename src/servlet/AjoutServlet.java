@@ -32,7 +32,7 @@ public class AjoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		/*-------------------recup parametre passé depusi le get ----------------*/
+		/*-------------------recup parametre passé depuis le get ----------------*/
 		String inputTitle=request.getParameter("inputTitle");
 		String inputDescription=request.getParameter("inputDescription");
 		String domain=request.getParameter("domain");
