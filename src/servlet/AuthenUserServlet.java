@@ -48,7 +48,7 @@ public class AuthenUserServlet extends HttpServlet {
         //	String logoutUrl = userService.createLoginURL("/ha-search-screen.html");
         	try {
 				json.put("nickname", user.getNickname());
-				syncCache.put("nickname", user.getNickname());
+			//	syncCache.put("nickname", user.getNickname());
 				
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
