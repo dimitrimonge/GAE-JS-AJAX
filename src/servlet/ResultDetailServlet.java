@@ -80,14 +80,28 @@ public class ResultDetailServlet extends HttpServlet {
 					
 					  JSONObject obj = new JSONObject();
 					 
+					  
+					  
+					  String inputTitle =(String) result.getProperty("inputTitle");
+					  String inputDescription =(String) result.getProperty("inputDescription");
+					  String domain =(String) result.getProperty("domain");
+					  String timeID =(String) result.getProperty("timeID");
 					  String exercicesTitle = (String) result.getProperty("exercicesTitle");
 					  String exercicesDescr = (String) result.getProperty("exercicesDescr");
 					  String exercicesTime =(String) result.getProperty("exercicesTime");
+					  
+					  
+					  
 					  try 
 					  {
-						obj.put(exercicesTitle,"title");
-						obj.put(exercicesDescr,"descr");
-						obj.put(exercicesTime,"time");
+						obj.put("inputTitle",inputTitle);
+						obj.put("inputDescription",inputDescription);
+						obj.put("timeID",timeID);
+						obj.put("title",exercicesTitle);
+						
+						obj.put("title",exercicesTitle);
+						obj.put("descr",exercicesDescr);
+						obj.put("time",exercicesTime);
 						arrayObj.put(obj);
 					  }
 					  catch (JSONException e) 
