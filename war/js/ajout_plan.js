@@ -2,6 +2,7 @@ var i=0;
 var tab_duree = [];
 var tableauTitle = [];
 var tableauDescr = [];
+var tableauTemps = [];
 
 function MAJtempsTot()
 {
@@ -38,6 +39,9 @@ function test()
 		tab_duree.push(date1);
 		MAJtempsTot();
 		var temps = Math.round((heure*60+minute+seconde/60)*100)/100;	
+		tableauTemps.push(temps.toString());
+		
+		
 		// --------------/ Ajout des temps --------------
 		i=i+1;
 		 $('#exercicesAdded').append("<tr id="+i+"><td> </td><td>"+ tableauTitle[i -1]+"</td> <td class='hidden-xs'><p>"+
@@ -52,6 +56,9 @@ function test()
 function supr(id)
 {
 	tab_duree.splice(id, 1);
+	tableauTitle.splice(id, 1);
+	tableauDescr.splice(id, 1);
+	tableauTemps.splice(id, 1);
 	MAJtempsTot();
 	var idDelete="#"+ id;
 	$(idDelete).remove();
@@ -68,7 +75,6 @@ function datastore()
 	/*var exercicesTitle= $("#TableauTitle").text();
 	var exercicesDescr= $("#TableauDescr").text();
 	var exercicesTime= $("#Tab_duree").text();*/
-	
 	$.get('ajout', 
 	{ 
 		'inputTitle':inputTitle,
@@ -77,7 +83,7 @@ function datastore()
 		'timeID':timeID,
 		'exercicesTabTitle':tableauTitle,
 		'exercicesTabDescr':tableauDescr,
-		'exercicesTabTime':tab_duree	
+		'exercicesTabTime':tableauTemps	
 	},
 	function(responseText)
 	{

@@ -19,6 +19,16 @@
   </servlet-mapping>
   
    <servlet>
+    <servlet-name>ResultDetail</servlet-name>
+    <servlet-class>servlet.ResultDetailServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ResultDetail</servlet-name>
+    <url-pattern>/resultdetail</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
     <servlet-name>AuthenUser</servlet-name>
     <servlet-class>servlet.AuthenUserServlet</servlet-class>
   </servlet>

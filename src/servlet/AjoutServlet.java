@@ -41,19 +41,19 @@ public class AjoutServlet extends HttpServlet {
 		
 		//int exercicesTabTitle[]={0,1,2};
 		
-		String exercicesTabTitle[]=request.getParameterValues("exercicesTabTitle");
-		String exercicesTabDescr[]=request.getParameterValues("exercicesTabDescr");
-		String exercicesTabTime[]=request.getParameterValues("exercicesTabTime");
+		String exercicesTabTitle[]=request.getParameterValues("exercicesTabTitle[]");
+		String exercicesTabDescr[]=request.getParameterValues("exercicesTabDescr[]");
+		String exercicesTabTime[]=request.getParameterValues("exercicesTabTime[]");
 		
 	
 		/*------------------- FIN recup parametre passé depusi le get ----------------*/
 		
-		int taille=exercicesTabTitle.length;
+		//int taille=exercicesTabTitle.length;
 		
 		
 		
 		
-		for(int i = 0; i<exercicesTabTitle.length;i++)
+		for(int i = 0; i<exercicesTabDescr.length;i++)
 		{
 			
 			Entity text = new Entity("Exercice");
