@@ -31,6 +31,7 @@ function test()
 	else if (descr==""){ alert("veuillez entrer une description ")}
 	else 
 	{	
+		titre = titre.replace(" ", "_")
 		tableauTitle.push(titre); 
 		tableauDescr.push(descr);
 		
@@ -90,5 +91,8 @@ function datastore()
 			
   	});
 	alert("Votre plan d'exercice à bien été ajouté")
-	window.location="ha-result-detail-screen.html?titre="+inputTitle;
+	setTimeout(function(){	// pour la MAJ du datastore
+			window.location="ha-result-detail-screen.html?titre="+inputTitle;
+	  		},3000);	  	
+	
 }
