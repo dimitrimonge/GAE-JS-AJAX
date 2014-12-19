@@ -90,5 +90,5 @@ function datastore()
 			
   	});
 	alert("Votre plan d'exercice à bien été ajouté")
-	window.location="ha-result-detail-screen.html?#titre="+inputTitle;
+	window.location="ha-result-detail-screen.html?titre="+inputTitle;
 }

@@ -91,7 +91,7 @@ public class ResultDetailServlet extends HttpServlet {
 					//out.print(statham);
 				//out.close();
 				
-				title = title + "*o";		// c'est moche mais pas moyen de creer un tableau ??
+				
 				//response.getWriter().write(title);
 				//request.setAttribute("title", title);
 
