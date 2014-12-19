@@ -18,6 +18,16 @@
     <url-pattern>/ajout</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>ResultSearch</servlet-name>
+    <servlet-class>servlet.ResultSearchServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ResultSearch</servlet-name>
+    <url-pattern>/resultsearch</url-pattern>
+  </servlet-mapping>
+  
    <servlet>
     <servlet-name>AuthenUser</servlet-name>
     <servlet-class>servlet.AuthenUserServlet</servlet-class>

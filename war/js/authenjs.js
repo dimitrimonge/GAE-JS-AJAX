@@ -49,3 +49,9 @@ function redirectTomyopenID(){
   	})
 }
 
+function send_data(){
+	 //recup des valeurs dans le formulaire
+	 var research=document.getElementById('research').value;
+	 //ajout dans l'url	
+	 window.location.href = "ha-result-screen.html?search="+research+"";
+	}

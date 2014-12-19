@@ -18,7 +18,7 @@
       <nav class="navbar navbar-inverse" role="navigation">
         <div class=" col-md-10 col-sm-10 col-xs-10 ">
             <form class="navbar-form navbar-left"  style="width:100%" role="search">
-                <button type="submit" class="btn btn-default">Search</button>
+                <button type="submit" class="btn btn-default" onclick="send_data(this.form)">Search</button>
                 <div class="form-group"  style="width:90%">
                     <input type="text"  style="width:100%" class="form-control" placeholder="Search">
                 </div>
@@ -31,6 +31,8 @@
                 <button type="submit" class="btn btn-link"> <span class="glyphicon glyphicon-stats"></span>  </button>
           </form>
         </div>
+          <div id="authentifie" class="navbar-form navbar-left">
+         </div>
       </nav>
       <!-- ------------------------------------------- HEADER ZONE END ------------------------------------------- -->
       
@@ -72,7 +74,7 @@
       <!-- ------------------------------------------- FOOTER ZONE ------------------------------------------- -->
       <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
         <div class=" col-md-10 col-sm-10 col-xs-10 ">
-            <form class="navbar-form navbar-left"  style="width:100%" role="search">
+            <form class="navbar-form navbar-left"  style="width:100%" role="search" action="ha-addTraining.html">
                 <button type="submit" class="btn btn-danger"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
                <label style="color:white">Add a Training Plan</label>
           </form>
@@ -84,5 +86,6 @@
     <script src="js/jquery-1.11.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src ="js/authenjs.js"></script>
   </body>
 </html>
