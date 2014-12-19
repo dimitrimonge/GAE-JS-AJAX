@@ -36,20 +36,16 @@ public class ResultSearchServlet extends HttpServlet {
 }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String keywords =request.getParameter("research");
-		String[] keyWordsArray = keywords.split("_");
-		
-		String TrainingPlansInfos ="";
-		String ExerciceInfos="";
-		
-		Query qTraining = new Query("TrainingPlan");
-		PreparedQuery pqTraining = datastore.prepare(qTraining);
-		for (Entity resultTraining : pqTraining.asIterable()) 
-		{
-			String TitleTrainingPlan = (String)resultTraining.getProperty("title");
-			
-			if(TitreContientKeyWords(keyWordsArray,TitleTrainingPlan))
-			{
+		String research =request.getParameter("research");
+		// Utilisation Query afin de rassembler les éléments a appeler/filter 
+		Query qTraining = new Query("Training");
+		qTraining.addFilter("lastName", Query.FilterOperator.EQUAL, lastNameParam); 
+		qTraining.addFilter("height", Query.FilterOperator.LESS_THAN, maxHeightParam);
+		//Récupération du résultat de la requète à l’aide de PreparedQuery 
+		PreparedQuery pq = datastore.prepare(qTraining);
+		for (Entity Trainingresult : pq.asIterable()) {
+			String TitleTraining = (String)Trainingresult.getProperty("title");
+			if(TitleTraining.contains(research)){
 				int dureeTraining=0;
 				Query qExerciceTime = new Query("Exercice");
 				qExerciceTime.addFilter("TrainingPlan", Query.FilterOperator.EQUAL, TitleTrainingPlan);
@@ -63,47 +59,8 @@ public class ResultSearchServlet extends HttpServlet {
 				String dureeTrainingS = dureeTraining + "min";
 				
 				TrainingPlansInfos += "nextvalue" + TitleTrainingPlan + "nextvalue" + dureeTrainingS + "nexttraining";
+				
 			}
-		}
-		
-		
-		
-		
-		Query qExercice = new Query("Exercice");
-		PreparedQuery pqExercice = datastore.prepare(qExercice);
-		for (Entity resultExercice : pqExercice.asIterable()) 
-		{
-			String TitleExercice = (String)resultExercice.getProperty("title");
-			String dureeExercice = (String)resultExercice.getProperty("duree");
-			
-			if(TitreContientKeyWords(keyWordsArray,TitleExercice))
-				ExerciceInfos += "nextvalue" + TitleExercice + "nextvalue" + dureeExercice + "nexttraining";
-			
-			//Format the answer
-			response.setContentType("application/json");
-			JSONObject json;
-			json = new JSONObject();
-			
-			json.put("training", TrainingPlansInfos);
-			json.put("exercice", ExerciceInfos);
-			
-			//Send the Json object to the web browser
-        	PrintWriter out = response.getWriter();   
-            
-            
-        	out.print(json);
-        	out.flush();
 		}
 	}
-		public boolean TitreContientKeyWords(String[] keyWordsArray,String Titre){
-			
-			for(String KeyWord:keyWordsArray) {
-			   if(Titre.contains(KeyWord))
-				   return true;
-			}
-			
-			
-			
-			return false;
-		}
 }

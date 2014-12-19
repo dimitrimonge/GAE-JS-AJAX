@@ -36,23 +36,41 @@ public class AjoutServlet extends HttpServlet {
 		String inputTitle=request.getParameter("inputTitle");
 		String inputDescription=request.getParameter("inputDescription");
 		String domain=request.getParameter("domain");
-		String exercicesAdded=request.getParameter("exercicesAdded");
 		String timeID=request.getParameter("timeID");
+		
+		
+		//int exercicesTabTitle[]={0,1,2};
+		
+		String exercicesTabTitle[]=request.getParameterValues("exercicesTabTitle[]");
+		String exercicesTabDescr[]=request.getParameterValues("exercicesTabDescr[]");
+		String exercicesTabTime[]=request.getParameterValues("exercicesTabTime[]");
 		
 	
 		/*------------------- FIN recup parametre passé depusi le get ----------------*/
-		Entity text = new Entity("Exercice");
-		text.setProperty("inputTitle",inputTitle);
-		text.setProperty("inputDescription",inputDescription);
-		text.setProperty("domain",domain);
-		text.setProperty("timeID",timeID);
-		text.setProperty("exercicesAdded",exercicesAdded);
 		
-		// entrée dans le datastore 
+		//int taille=exercicesTabTitle.length;
 		
-		datastore.put(text);
+		
+		
+		
+		for(int i = 0; i<exercicesTabDescr.length;i++)
+		{
+			
+			Entity text = new Entity("Exercice");
+			text.setProperty("inputTitle",inputTitle);
+			text.setProperty("inputDescription",inputDescription);
+			text.setProperty("domain",domain);
+			text.setProperty("timeID",timeID);
+			text.setProperty("exercicesTitle",exercicesTabTitle[i]);
+			text.setProperty("exercicesDescr",exercicesTabDescr[i]);
+			text.setProperty("exercicesTime",exercicesTabTime[i]);
+			
+			// entrée dans le datastore 
+			
+			datastore.put(text);
+			
+		}
 		response.equals(1);
-		
 		
 	}
 
